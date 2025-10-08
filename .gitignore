@@ -1,5 +1,7 @@
+# Dependencies
 node_modules/
 
+# Environment variables
 .env
 .env.*.local
 .env.local
@@ -7,6 +9,7 @@ node_modules/
 .env.production
 .env.test
 
+# Logs
 .log
 logs/
 npm-debug.log
@@ -14,23 +17,44 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# Next.js build outputs
 .next/
 out/
-
 dist/
 .cache/
 
+# Build outputs
+apps/api/documentation/
+apps/api/dist/
+apps/web/.next/
+apps/web/out/
+apps/web/dist/
+apps/web/.cache/
+
+# Nested Dependencies
+**/node_modules/
+
+# NestJS cache
+apps/api/.nestjs/
+
+# Compodoc documentation
+apps/api/.compodoc
+
+# IDE files
 .idea/
 .vscode/
 
+# Testing
 coverage/
 build/
 
+# OS files
 macOS
 .DS_Store
 .AppleDouble
 .LSOverride
 
+# Windows system files
 Windows
 Thumbs.db
 ehthumbs.db

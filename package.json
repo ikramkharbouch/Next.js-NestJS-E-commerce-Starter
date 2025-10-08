@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "concurrently \"pnpm --filter api run start:dev\" \"pnpm --filter web run dev\"",
     "build:api": "cd apps/api && rm -rf documentation && nest build",
+    "compodoc": "cd apps/api && compodoc -p tsconfig.json -s",
+    "compodoc:build": "cd apps/api && compodoc -p tsconfig.json -d documentation",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +21,7 @@
   },
   "homepage": "https://github.com/ikramkharbouch/Next.js-NestJS-E-commerce-Starter#readme",
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.31",
     "@types/bcrypt": "^6.0.0",
     "@types/passport-jwt": "^4.0.1",
     "concurrently": "^9.2.1",
