@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"pnpm --filter api run start:dev\" \"pnpm --filter web run dev\"",
+    "build:api": "cd apps/api && rm -rf documentation && nest build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
