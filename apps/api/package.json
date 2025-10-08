@@ -32,6 +32,7 @@
     "typeorm": "^0.3.27"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.31",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
