@@ -14,7 +14,6 @@ export class CartService {
     private readonly productsService: ProductsService,
   ) {}
 
-  // Creates a new, empty cart in the database.
   async create(): Promise<Cart> {
     const newCart = this.cartRepository.create({ items: [] });
     return this.cartRepository.save(newCart);
@@ -44,6 +43,43 @@ export class CartService {
       newCartItem.productId = product.id;
       newCartItem.quantity = addItemDto.quantity;
       cart.items.push(newCartItem);
+    }
+
+    return this.cartRepository.save(cart);
+  }
+
+  async updateItemQuantity(
+    cartId: string,
+    cartItemId: number,
+    quantity: number,
+  ): Promise<Cart> {
+    const cart = await this.findOne(cartId);
+    const cartItem = cart.items.find((item) => item.id === cartItemId);
+
+    if (!cartItem) {
+      throw new NotFoundException(
+        `Item with ID "${cartItemId}" not found in cart`,
+      );
+    }
+
+    if (quantity <= 0) {
+      cart.items = cart.items.filter((item) => item.id !== cartItemId);
+    } else {
+      cartItem.quantity = quantity;
+    }
+
+    return this.cartRepository.save(cart);
+  }
+
+  async removeItem(cartId: string, cartItemId: number): Promise<Cart> {
+    const cart = await this.findOne(cartId);
+    const initialLength = cart.items.length;
+    cart.items = cart.items.filter((item) => item.id !== cartItemId);
+
+    if (cart.items.length === initialLength) {
+      throw new NotFoundException(
+        `Item with ID "${cartItemId}" not found in cart`,
+      );
     }
 
     return this.cartRepository.save(cart);
