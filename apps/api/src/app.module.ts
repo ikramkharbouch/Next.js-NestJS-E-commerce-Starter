@@ -7,6 +7,7 @@ import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
+import { CartModule } from './cart/cart.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { configValidationSchema } from './config.schema';
     ProductsModule,
     UsersModule,
     AuthModule,
+    CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
