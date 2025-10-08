@@ -7,5 +7,6 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "incremental": true
-  }
+  },
+  "exclude": ["node_modules", "dist", "documentation"]
 }
